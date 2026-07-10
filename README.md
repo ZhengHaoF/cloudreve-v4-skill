@@ -9,21 +9,15 @@ API. Zero external dependencies — uses only Node.js 18+ built-ins (`fetch`, `f
 
 ## Install
 
-The skill is just a folder. Copy it to one of these locations:
+Clone this repository. The uploader is a single, dependency-free Node.js
+script — no `npm install` required:
 
-- **User-level** (available in every workspace):
+```bash
+git clone https://github.com/ZhengHaoF/cloudreve-v4-skill.git
+cd cloudreve-v4-skill
+```
 
-  ```bash
-  cp -r cloudreve-v4-skill ~/.workbuddy/skills/cloudreve-v4-upload
-  ```
-
-- **Project-level** (only for the current project):
-
-  ```bash
-  cp -r cloudreve-v4-skill <your-project>/.workbuddy/skills/cloudreve-v4-upload
-  ```
-
-No `npm install` is needed — the uploader script is dependency-free.
+Requires **Node.js 18+** (uses built-in `fetch` / `fs`).
 
 ## First run (interactive setup)
 
@@ -37,7 +31,7 @@ It prompts for:
 2. **API Token** — paste one if you have it (preferred); or leave blank…
 3. **Login email + password** — used once to fetch a token.
 
-Settings are saved to `~/.workbuddy/cloudreve-upload.json` (plaintext; `0600` on
+Settings are saved to `~/.cloudreve-upload.json` (plaintext; `0600` on
 Unix). Later runs skip the prompts.
 
 > Note: Cloudreve v4 logs in with the **email**, not a username. **2FA is not

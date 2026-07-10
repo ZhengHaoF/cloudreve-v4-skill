@@ -11,7 +11,7 @@
  *     Cloudreve via its /callback/{provider}/... endpoint (oss auto-callbacks).
  *
  * Flow:
- *   1. Resolve config: CLI args > env > ~/.workbuddy/cloudreve-upload.json
+ *   1. Resolve config: CLI args > env > ~/.cloudreve-upload.json
  *      (first run with missing info triggers an interactive init).
  *   2. Auth:  token (preferred) or email+password sign-in.
  *   3. PUT  /api/v4/file/upload            -> create upload session
@@ -28,7 +28,7 @@ const os = require('os');
 const crypto = require('crypto');
 const readline = require('readline');
 
-const CONFIG_PATH = path.join(os.homedir(), '.workbuddy', 'cloudreve-upload.json');
+const CONFIG_PATH = path.join(os.homedir(), '.cloudreve-upload.json');
 
 // ---------------------------------------------------------------------------
 // tiny helpers

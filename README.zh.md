@@ -8,21 +8,14 @@
 
 ## 安装
 
-本技能就是一个文件夹。把它复制到以下任一位置即可：
+克隆本仓库即可。上传器是一个零依赖的 Node.js 脚本，无需执行 `npm install`：
 
-- **用户级**（在每一个工作区都可用）：
+```bash
+git clone https://github.com/ZhengHaoF/cloudreve-v4-skill.git
+cd cloudreve-v4-skill
+```
 
-  ```bash
-  cp -r cloudreve-v4-skill ~/.workbuddy/skills/cloudreve-v4-upload
-  ```
-
-- **项目级**（仅当前项目可用）：
-
-  ```bash
-  cp -r cloudreve-v4-skill <你的项目>/.workbuddy/skills/cloudreve-v4-upload
-  ```
-
-无需执行 `npm install`——上传脚本不依赖任何第三方包。
+需要 **Node.js 18+**（使用内置的 `fetch` / `fs`）。
 
 ## 首次运行（交互式初始化）
 
@@ -36,7 +29,7 @@ node cloudreve-v4-skill/scripts/upload.js --init
 2. **API Token** —— 如果你已有 token，直接粘贴（推荐）；或留空……
 3. **登录邮箱 + 密码** —— 仅用于一次性换取 token。
 
-配置会保存到 `~/.workbuddy/cloudreve-upload.json`（明文；Unix 下权限 `0600`）。
+配置会保存到 `~/.cloudreve-upload.json`（明文；Unix 下权限 `0600`）。
 之后的运行将跳过这些提示。
 
 > 注意：Cloudreve v4 登录使用的是 **邮箱**，而不是用户名。**v1 不支持两步验证（2FA）。**
