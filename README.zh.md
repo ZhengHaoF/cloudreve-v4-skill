@@ -13,13 +13,13 @@
 - **用户级**（在每一个工作区都可用）：
 
   ```bash
-  cp -r cloudreve-v4-upload ~/.workbuddy/skills/cloudreve-v4-upload
+  cp -r cloudreve-v4-skill ~/.workbuddy/skills/cloudreve-v4-upload
   ```
 
 - **项目级**（仅当前项目可用）：
 
   ```bash
-  cp -r cloudreve-v4-upload <你的项目>/.workbuddy/skills/cloudreve-v4-upload
+  cp -r cloudreve-v4-skill <你的项目>/.workbuddy/skills/cloudreve-v4-upload
   ```
 
 无需执行 `npm install`——上传脚本不依赖任何第三方包。
@@ -27,7 +27,7 @@
 ## 首次运行（交互式初始化）
 
 ```bash
-node cloudreve-v4-upload/scripts/upload.js --init
+node cloudreve-v4-skill/scripts/upload.js --init
 ```
 
 脚本会依次提示：
@@ -44,7 +44,7 @@ node cloudreve-v4-upload/scripts/upload.js --init
 ## 上传
 
 ```bash
-node cloudreve-v4-upload/scripts/upload.js \
+node cloudreve-v4-skill/scripts/upload.js \
   --file /path/to/local/file.zip \
   --dir /docs/archive \
   --token "$CLOUDREVE_TOKEN"
@@ -53,7 +53,7 @@ node cloudreve-v4-upload/scripts/upload.js \
 或者使用邮箱 + 密码代替 token：
 
 ```bash
-node cloudreve-v4-upload/scripts/upload.js \
+node cloudreve-v4-skill/scripts/upload.js \
   --file /path/to/local/file.zip \
   --dir /docs/archive \
   --email me@example.com --password 'secret'
@@ -66,8 +66,8 @@ node cloudreve-v4-upload/scripts/upload.js \
 ## 重新初始化（修改密码 / 邮箱 / 地址）
 
 ```bash
-node cloudreve-v4-upload/scripts/upload.js --reinit    # 别名：--reinitialize
-node cloudreve-v4-upload/scripts/upload.js --reset     # 清空已保存的配置
+node cloudreve-v4-skill/scripts/upload.js --reinit    # 别名：--reinitialize
+node cloudreve-v4-skill/scripts/upload.js --reset     # 清空已保存的配置
 ```
 
 `--reinit` 会显示每一项已保存的值作为默认值——直接回车则沿用原值，
@@ -117,7 +117,7 @@ node cloudreve-v4-upload/scripts/upload.js --reset     # 清空已保存的配�
 ## 文件结构
 
 ```
-cloudreve-v4-upload/
+cloudreve-v4-skill/
 ├── SKILL.md            # 技能定义（触发词、用法、参数）
 ├── README.md           # 英文说明（本文件有中文版 README.zh.md）
 ├── README.zh.md        # 中文说明

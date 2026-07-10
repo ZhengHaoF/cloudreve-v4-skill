@@ -14,13 +14,13 @@ The skill is just a folder. Copy it to one of these locations:
 - **User-level** (available in every workspace):
 
   ```bash
-  cp -r cloudreve-v4-upload ~/.workbuddy/skills/cloudreve-v4-upload
+  cp -r cloudreve-v4-skill ~/.workbuddy/skills/cloudreve-v4-upload
   ```
 
 - **Project-level** (only for the current project):
 
   ```bash
-  cp -r cloudreve-v4-upload <your-project>/.workbuddy/skills/cloudreve-v4-upload
+  cp -r cloudreve-v4-skill <your-project>/.workbuddy/skills/cloudreve-v4-upload
   ```
 
 No `npm install` is needed — the uploader script is dependency-free.
@@ -28,7 +28,7 @@ No `npm install` is needed — the uploader script is dependency-free.
 ## First run (interactive setup)
 
 ```bash
-node cloudreve-v4-upload/scripts/upload.js --init
+node cloudreve-v4-skill/scripts/upload.js --init
 ```
 
 It prompts for:
@@ -46,7 +46,7 @@ Unix). Later runs skip the prompts.
 ## Upload
 
 ```bash
-node cloudreve-v4-upload/scripts/upload.js \
+node cloudreve-v4-skill/scripts/upload.js \
   --file /path/to/local/file.zip \
   --dir /docs/archive \
   --token "$CLOUDREVE_TOKEN"
@@ -55,7 +55,7 @@ node cloudreve-v4-upload/scripts/upload.js \
 Or with email + password instead of a token:
 
 ```bash
-node cloudreve-v4-upload/scripts/upload.js \
+node cloudreve-v4-skill/scripts/upload.js \
   --file /path/to/local/file.zip \
   --dir /docs/archive \
   --email me@example.com --password 'secret'
@@ -68,8 +68,8 @@ Precedence: CLI args > env vars > saved config file.
 ## Re-initialize (change password / email / URL)
 
 ```bash
-node cloudreve-v4-upload/scripts/upload.js --reinit    # alias: --reinitialize
-node cloudreve-v4-upload/scripts/upload.js --reset     # wipe saved config
+node cloudreve-v4-skill/scripts/upload.js --reinit    # alias: --reinitialize
+node cloudreve-v4-skill/scripts/upload.js --reset     # wipe saved config
 ```
 
 `--reinit` shows each saved value as a default — press Enter to keep it, or type
@@ -121,7 +121,7 @@ a new value to change just that field.
 ## Files
 
 ```
-cloudreve-v4-upload/
+cloudreve-v4-skill/
 ├── SKILL.md            # skill definition (trigger phrases, usage, params)
 ├── README.md           # this file (English)
 ├── README.zh.md        # Chinese version
