@@ -1,0 +1,11 @@
+# Local dev / runtime memory (not part of the skill)
+.workbuddy/
+
+# Packaged build artifact (regenerate with the packaging step)
+dist/
+
+# Local secrets
+.env
+
+# Logs
+*.log
