@@ -41,6 +41,14 @@ if (fs.existsSync(path.join(selfDir, 'SKILL.md'))) {
   src = repoDir;
 }
 
+// Sanity check: the clone must have produced a real working tree.
+if (!fs.existsSync(path.join(src, 'SKILL.md'))) {
+  console.error(`ERROR: clone produced an empty working tree (no SKILL.md in ${src}).`);
+  console.error('       Check your git/network and retry. If the temp dir is restricted, set SKILLS_DIR and clone manually.');
+  if (tmpRoot) fs.rmSync(tmpRoot, { recursive: true, force: true });
+  process.exit(1);
+}
+
 fs.mkdirSync(target, { recursive: true });
 
 const items = ['SKILL.md', 'README.md', 'README.zh.md', 'scripts', 'references', '.env.example'];

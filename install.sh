@@ -32,6 +32,14 @@ else
   SRC="$TMP/repo"
 fi
 
+# Sanity check: the clone must have produced a real working tree.
+if [ ! -f "$SRC/SKILL.md" ]; then
+  echo "ERROR: clone produced an empty working tree (no SKILL.md found in $SRC)." >&2
+  echo "       Check your git/network and retry. If /tmp is restricted, set TMPDIR." >&2
+  [ -n "$TMP" ] && rm -rf "$TMP"
+  exit 1
+fi
+
 mkdir -p "$TARGET"
 
 # Copy only the skill's own files; exclude repo-only / local artifacts.
