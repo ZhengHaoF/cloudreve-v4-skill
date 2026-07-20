@@ -352,9 +352,18 @@ async function uploadS3(state, session, fd, size) {
   // Notify Cloudreve. oss callbacks itself; the others need an explicit call.
   const provider = S3_CALLBACK_PROVIDER[session.storage_policy.type];
   if (provider && provider !== 'oss') {
-    const key = new URL(session.completeURL).pathname.split('/').filter(Boolean).pop();
+    // Cloudreve's callback route is GET /api/v4/callback/{provider}/{sessionID}/{key},
+    // where the PATH param `key` must equal the session's `callback_secret`
+    // (server does a constant-time compare). It is NOT the S3 object key. A
+    // mismatch returns 40020 "Invalid callback secret".
     const cbUrl =
-      apiBase(state) + '/callback/' + provider + '/' + session.session_id + '/' + encodeURIComponent(key);
+      apiBase(state) +
+      '/callback/' +
+      provider +
+      '/' +
+      session.session_id +
+      '/' +
+      encodeURIComponent(session.callback_secret || '');
     const cb = await fetch(cbUrl, { method: 'GET' });
     const cbj = await cb.json().catch(() => ({}));
     if (cbj.code !== 0) fail('Cloudreve S3 callback failed: ' + JSON.stringify(cbj));

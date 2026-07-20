@@ -90,8 +90,9 @@ Response `data` (key fields):
 - `upload_urls` — one **presigned PUT URL per part**; the URL already carries
   `partNumber=N` (1-based) and the multipart `uploadId`.
 - `completeURL` — presigned `CompleteMultipartUpload` URL for the same object.
-- `callback_secret` — only relevant when the provider calls back on its own
-  (e.g. OSS); for the client-driven S3/COS/OBS callback it is **not** needed.
+- `callback_secret` — **required** for the client-driven S3/COS/OBS callback
+  (see Step 3.2). It is the value you must pass as the `{key}` path segment of
+  the callback URL. (OSS calls back on its own and ignores this.)
 
 ## Step 2 — Upload chunks
 
@@ -145,8 +146,11 @@ API call is required.
 
    - `provider` ∈ `{ s3, cos, obs }` (use `s3` for `ks3` too). `oss` callbacks
      itself — skip this call for `oss`.
-   - `key` = the **last path segment** of `completeURL` (the object name, e.g.
-     `Pb7ofKUJ.txt`), URL-encoded.
+   - `key` = the session's **`callback_secret`** (from the Step 1 response),
+     URL-encoded. It is **not** the S3 object name — Cloudreve looks up the
+     upload session by `{session_id}` and constant-time-compares this `key`
+     against the stored secret; a mismatch returns **40020 "Invalid callback
+     secret"**. (Do not pass it as a query parameter — it is a path segment.)
    - Auth: **none** required. Expect `{ "code": 0, "msg": "" }` on success.
 
 This flow was verified end-to-end against a real `s3` instance.
@@ -194,6 +198,7 @@ Response `data` (success, `code: 0`):
 | 40011 | Upload session expired     |
 | 40012 | Invalid chunk index        |
 | 40013 | Invalid Content-Length     |
+| 40020 | Invalid callback secret (callback `key` ≠ `callback_secret`) |
 | 40049 | File too large             |
 | 40051 | Insufficient user capacity |
 | 40052 | Illegal object name        |
