@@ -8,6 +8,7 @@ description: >-
   "upload to cloudreve", "sync to cloudreve". Supports the local storage policy
   and S3-compatible policies (s3 / ks3 / cos / obs / oss).
 version: "1.4"
+agent_created: true
 ---
 
 # Cloudreve v4 Upload

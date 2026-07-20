@@ -8,6 +8,19 @@
 
 ## 安装
 
+### 一行命令（推荐）
+
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/ZhengHaoF/cloudreve-v4-skill/main/install.sh)
+```
+
+这条命令会把技能复制到 `~/.workbuddy/skills/cloudreve-v4-upload`，你的 AI 助手即可加载它。需要 `git` + `bash`（macOS / Linux / Windows 上的 Git Bash）。若使用 Windows PowerShell 且没有 bash，可先克隆仓库再运行 `node install.js`。
+
+- 指定其它技能目录，用 `SKILLS_DIR` 环境变量：
+  `SKILLS_DIR=/path/to/skills bash <(curl -fsSL …/install.sh)`
+
+### 手动
+
 克隆本仓库即可。上传器是一个零依赖的 Node.js 脚本，无需执行 `npm install`：
 
 ```bash

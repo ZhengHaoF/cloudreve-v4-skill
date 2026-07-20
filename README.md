@@ -9,6 +9,22 @@ API. Zero external dependencies — uses only Node.js 18+ built-ins (`fetch`, `f
 
 ## Install
 
+### One-line (recommended)
+
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/ZhengHaoF/cloudreve-v4-skill/main/install.sh)
+```
+
+This copies the skill into `~/.workbuddy/skills/cloudreve-v4-upload` so your
+agent can load it. Requires `git` + `bash` (macOS / Linux / Git Bash on
+Windows). On Windows PowerShell without bash, clone first and run
+`node install.js`.
+
+- Target a different skills directory with `SKILLS_DIR`:
+  `SKILLS_DIR=/path/to/skills bash <(curl -fsSL …/install.sh)`
+
+### Manual
+
 Clone this repository. The uploader is a single, dependency-free Node.js
 script — no `npm install` required:
 
