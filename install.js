@@ -8,7 +8,7 @@
 // standalone, or uses the current directory when run from a cloned copy), then
 // copies it into the agent's skills directory.
 //
-// Target: default %USERPROFILE%/.workbuddy/skills/cloudreve-v4-upload
+// Target: default %USERPROFILE%/.agents/skills/cloudreve-v4-upload
 //         (override with the SKILLS_DIR environment variable).
 // Requires: `git` on PATH.
 
@@ -21,7 +21,7 @@ const SKILL_ID = 'cloudreve-v4-upload';
 const REPO = 'https://github.com/ZhengHaoF/cloudreve-v4-skill.git';
 const target = process.env.SKILLS_DIR
   ? path.resolve(process.env.SKILLS_DIR)
-  : path.join(os.homedir(), '.workbuddy', 'skills', SKILL_ID);
+  : path.join(os.homedir(), '.agents', 'skills', SKILL_ID);
 
 function run(cmd) {
   console.error('$ ' + cmd);

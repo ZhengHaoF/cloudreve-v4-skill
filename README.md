@@ -29,10 +29,15 @@ cd cloudreve-v4-skill
 
 Requires **Node.js 18+** (uses built-in `fetch` / `fs`).
 
-To install the skill, copy the folder into your agent's skills directory:
+To install the skill, copy the folder into a skills directory. The default
+(agent-agnostic) location is `.agents/skills/` — user-level at
+`~/.agents/skills/cloudreve-v4-upload` or project-level at
+`<project-root>/.agents/skills/cloudreve-v4-upload`. If your agent has its own
+dedicated skills path (e.g. WorkBuddy `~/.workbuddy/skills/`, Claude Code
+`~/.claude/skills/`), prefer that.
 
 ```bash
-cp -r cloudreve-v4-skill ~/.workbuddy/skills/cloudreve-v4-upload
+cp -r cloudreve-v4-skill ~/.agents/skills/cloudreve-v4-upload
 ```
 
 Then configure it (see [First run](#first-run-interactive-setup) below).

@@ -32,26 +32,31 @@ cd cloudreve-v4-skill
 
 技能本质就是一个文件夹，复制到 Agent 的 skills 目录即会被加载。
 
-- **用户级**（所有工作区都可用）：
+**由 AI 决定安装位置**：先判断你（Agent）自己的技能目录在哪里；如果无法确定，使用通用默认位置 `.agents/skills/`。
 
-  ```bash
-  cp -r cloudreve-v4-skill ~/.workbuddy/skills/cloudreve-v4-upload
-  ```
+- **默认（与具体 Agent 无关）**：
+  - 用户级（所有工作区可用）：`~/.agents/skills/cloudreve-v4-upload`
+  - 项目级（仅当前项目可用）：`<项目根目录>/.agents/skills/cloudreve-v4-upload`
+- **若你所在的 Agent 有专属技能目录，优先用那个**：
+  - 例如 WorkBuddy：`~/.workbuddy/skills/`
+  - 例如 Claude Code：`~/.claude/skills/`
 
-- **项目级**（仅当前项目可用）：
+以默认用户级为例的复制命令：
 
-  ```bash
-  cp -r cloudreve-v4-skill <项目根目录>/.workbuddy/skills/cloudreve-v4-upload
-  ```
+```bash
+cp -r cloudreve-v4-skill ~/.agents/skills/cloudreve-v4-upload
+```
+
+Windows PowerShell 没有 `cp -r`，改用：
+
+```powershell
+Copy-Item -Recurse cloudreve-v4-skill $env:USERPROFILE/.agents/skills/cloudreve-v4-upload
+```
 
 **注意：**
 
 - 目标目录名必须是 `cloudreve-v4-upload`（这是技能 ID，Agent 靠它识别），源目录名是 `cloudreve-v4-skill`，两者不同，别粘贴错。
-- Windows PowerShell 没有 `cp -r`，改用：
-
-  ```powershell
-  Copy-Item -Recurse cloudreve-v4-skill $env:USERPROFILE/.workbuddy/skills/cloudreve-v4-upload
-  ```
+- 若目标 skills 目录不存在，先创建它（例如 `mkdir -p ~/.agents/skills`）。
 
 ---
 

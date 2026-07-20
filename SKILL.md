@@ -28,7 +28,7 @@ policy and **S3-compatible** policies (s3 / ks3 / cos / obs / oss).
   cloudreve 的密码", "换 cloudreve 账号", "更新网盘 token" — proactively
   suggest running the script with `--reinit` (or `--reinitialize`) so they can
   update the saved URL / email / password / token. Do not hand-edit
-  `~/.workbuddy/cloudreve-upload.json` directly.
+  `~/.cloudreve-upload.json` directly.
 - When starting an upload and **no config / args are present**, ask the user for
   the instance URL and credentials, or run `node <skill>/scripts/upload.js --init`
   to walk them through first-time setup.
@@ -53,7 +53,7 @@ policy and **S3-compatible** policies (s3 / ks3 / cos / obs / oss).
 
 ## First-run setup
 
-The skill persists config to `~/.workbuddy/cloudreve-upload.json` so the user is
+The skill persists config to `~/.cloudreve-upload.json` so the user is
 only asked once. On the **first use** (or whenever the URL / credentials are
 missing) the script interactively prompts for:
 

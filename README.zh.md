@@ -27,10 +27,10 @@ cd cloudreve-v4-skill
 
 需要 **Node.js 18+**（使用内置的 `fetch` / `fs`）。
 
-把文件夹复制到 Agent 的 skills 目录即可安装：
+把文件夹复制到 skills 目录即可安装。默认（与具体 Agent 无关）位置是 `.agents/skills/`——用户级为 `~/.agents/skills/cloudreve-v4-upload`，项目级为 `<项目根目录>/.agents/skills/cloudreve-v4-upload`。若你用的 Agent 有专属技能目录（例如 WorkBuddy 用 `~/.workbuddy/skills/`、Claude Code 用 `~/.claude/skills/`），优先用那个。
 
 ```bash
-cp -r cloudreve-v4-skill ~/.workbuddy/skills/cloudreve-v4-upload
+cp -r cloudreve-v4-skill ~/.agents/skills/cloudreve-v4-upload
 ```
 
 然后初始化配置（见下方[首次运行](#首次运行交互式初始化)）。

@@ -32,26 +32,31 @@ cd cloudreve-v4-skill
 
 The skill is just a folder. Copy it into your agent's skills directory to make it loadable.
 
-- **User-level** (available in every workspace):
+**Let the AI decide where to install:** first determine the skills directory used by the agent you are running in; if that can't be determined, fall back to the generic default `.agents/skills/`.
 
-  ```bash
-  cp -r cloudreve-v4-skill ~/.workbuddy/skills/cloudreve-v4-upload
-  ```
+- **Default (agent-agnostic):**
+  - User-level (available in every workspace): `~/.agents/skills/cloudreve-v4-upload`
+  - Project-level (only the current project): `<project-root>/.agents/skills/cloudreve-v4-upload`
+- **If your agent has its own dedicated skills directory, prefer that:**
+  - e.g. WorkBuddy: `~/.workbuddy/skills/`
+  - e.g. Claude Code: `~/.claude/skills/`
 
-- **Project-level** (only the current project):
+Example copy command (default user-level):
 
-  ```bash
-  cp -r cloudreve-v4-skill <project-root>/.workbuddy/skills/cloudreve-v4-upload
-  ```
+```bash
+cp -r cloudreve-v4-skill ~/.agents/skills/cloudreve-v4-upload
+```
+
+Windows PowerShell has no `cp -r`; use instead:
+
+```powershell
+Copy-Item -Recurse cloudreve-v4-skill $env:USERPROFILE/.agents/skills/cloudreve-v4-upload
+```
 
 **Notes:**
 
 - The target directory name **must** be `cloudreve-v4-upload` (that's the skill ID the agent recognizes). The source directory is `cloudreve-v4-skill` — they differ, don't mix them up.
-- Windows PowerShell has no `cp -r`; use instead:
-
-  ```powershell
-  Copy-Item -Recurse cloudreve-v4-skill $env:USERPROFILE/.workbuddy/skills/cloudreve-v4-upload
-  ```
+- If the target skills directory doesn't exist yet, create it first (e.g. `mkdir -p ~/.agents/skills`).
 
 ---
 
