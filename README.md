@@ -9,19 +9,13 @@ API. Zero external dependencies — uses only Node.js 18+ built-ins (`fetch`, `f
 
 ## Install
 
-### One-line (recommended)
+### Let your AI install it (recommended)
 
-```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/ZhengHaoF/cloudreve-v4-skill/main/install.sh)
-```
+Just ask your agent to follow the setup doc — no shell script needed:
 
-This copies the skill into `~/.workbuddy/skills/cloudreve-v4-upload` so your
-agent can load it. Requires `git` + `bash` (macOS / Linux / Git Bash on
-Windows). On Windows PowerShell without bash, clone first and run
-`node install.js`.
+> Please read https://raw.githubusercontent.com/ZhengHaoF/cloudreve-v4-skill/main/cli-setup.en.md and install and configure cloudreve-v4-upload for me, following the steps.
 
-- Target a different skills directory with `SKILLS_DIR`:
-  `SKILLS_DIR=/path/to/skills bash <(curl -fsSL …/install.sh)`
+The agent reads `cli-setup.en.md` and runs the steps for you (clone → copy → init).
 
 ### Manual
 
@@ -34,6 +28,14 @@ cd cloudreve-v4-skill
 ```
 
 Requires **Node.js 18+** (uses built-in `fetch` / `fs`).
+
+To install the skill, copy the folder into your agent's skills directory:
+
+```bash
+cp -r cloudreve-v4-skill ~/.workbuddy/skills/cloudreve-v4-upload
+```
+
+Then configure it (see [First run](#first-run-interactive-setup) below).
 
 ## First run (interactive setup)
 

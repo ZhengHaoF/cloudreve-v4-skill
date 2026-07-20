@@ -8,16 +8,13 @@
 
 ## 安装
 
-### 一行命令（推荐）
+### 让 AI 帮你装（推荐）
 
-```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/ZhengHaoF/cloudreve-v4-skill/main/install.sh)
-```
+直接让你的 AI 助手按安装文档执行，无需任何 shell 脚本：
 
-这条命令会把技能复制到 `~/.workbuddy/skills/cloudreve-v4-upload`，你的 AI 助手即可加载它。需要 `git` + `bash`（macOS / Linux / Windows 上的 Git Bash）。若使用 Windows PowerShell 且没有 bash，可先克隆仓库再运行 `node install.js`。
+> 请阅读 https://raw.githubusercontent.com/ZhengHaoF/cloudreve-v4-skill/main/cli-setup.md 文档，按照步骤为我安装并配置 cloudreve-v4-upload
 
-- 指定其它技能目录，用 `SKILLS_DIR` 环境变量：
-  `SKILLS_DIR=/path/to/skills bash <(curl -fsSL …/install.sh)`
+AI 会读取 `cli-setup.md` 并替你跑完步骤（克隆 → 复制 → 初始化）。
 
 ### 手动
 
@@ -29,6 +26,14 @@ cd cloudreve-v4-skill
 ```
 
 需要 **Node.js 18+**（使用内置的 `fetch` / `fs`）。
+
+把文件夹复制到 Agent 的 skills 目录即可安装：
+
+```bash
+cp -r cloudreve-v4-skill ~/.workbuddy/skills/cloudreve-v4-upload
+```
+
+然后初始化配置（见下方[首次运行](#首次运行交互式初始化)）。
 
 ## 首次运行（交互式初始化）
 
